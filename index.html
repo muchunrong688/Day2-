@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>单词配对消消乐</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Noto+Sans+Arabic:wght@700&display=swap');
+
+        body {
+            background-color: #e8f5e9;
+            background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MDAgNjAwIj48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iIzAwNjMzNSIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0zOTAgMjc5LjZjLTE2IDAtMjguOCAxMi44LTI4LjggMjguOHMtMTIuOCAyOC44LTI4LjggMjguOGgtMjcuNmMtMTYgMC0yOC44LTEyLjgtMjguOC0yOC44czEyLjgtMjguOCAyOC44LTI4LjhjMTYgMCAyOC44LTEyLjggMjguOC0yOC44cy0xMi44LTI4LjgtMjguOC0yOC44YzE2IDAgMjguOCAxMi44IDI4LjggMjguOHMyMiA0Mi41IDQ2LjYgNDIuNmMtMjQuNiAwLTQ2LjYtMTIuNS00Ni42LTQyLjZzMTYuNy0zMC4yIDI4LjgtMjguOGM2LjQgMC41IDkuNiAzLjggOS42IDguMnM0LjIgOC4zIDkuNiA4LjNsMTUuNi0xMmM1LjYtMy44IDMuMi04LjItOS42LTguMnMtMTUuNi04LjYtMjYuNC0xNy44YzcuNy03LjIgMTkuMi0xMi4zIDM0LjgtMTYuYy0xLjMtMTQuMiA0LjctMjkuNiAxNy40LTI4LjggMTAuNC42IDI2LjggMTEuOCAyNi44IDI4LjhzLTUuMiA2LjQtMTMuNiA2LjRzLTcuNS02LTExLjktNi42Yy0xOC0yLjYtMjcuMyA0LjItMjguOCA3LjgtMTQuNi0uMi0zMi40IDktMzIuNCAyNS40cy0xNi40IDI2LTMyLjQgMjUuNGMwLTExLjQtOS4zLTE1LjgtMTktMTUuOGgtMTdjLTEwLjYgMC0xOS4zIDgtMTkgMTkuM3MxNiA0MS40IDQ2LjUgNDEuNGMzMC42IDAgNDYuNi0zMC44IDQ2LjYtMzAuOHMtNS43LTQuMi0xOC40LTIuNGMwIDguMiAzLjIgMjkuNCAxMi41IDM0LjJjNi4zIDMuMiAxOC40IDMgMTguNC0xLjZsNi42LTUuMiAzLjYgMTRjMS44IDcgMTUgNC40IDEwLjgtNi4yLTEuOC01LTIuNi05LTItMTEuNmgtMy42djcuMmMxLjIgMTkuMiA0LjggMTguOCA0LjggMTguOHMxOS4yIDcgMjYuNiAxNS44Yy0yLjUgMjkuOC0zMS4yIDM0LjYtNTguMiAzNC42Yy0zNi4yIDAtNzAuOC0yNi40LTcwLjgtNjEuM3MxMC42LTcxLjYgNTgtNzEuNiA1OC02IDU4LTcuMmMwLTI3LTExLjQtNDQuMi0yNC42LTUyLjJjLTEzLjItOC0yMy42LTEuNC0yNy4yIDEuOGwtMTAgNmMtMTMgNS42LTEwLjYtMy42LTEwLjYtMy42czYtNy44IDIzLTkuNmM5LjYtMSAxMi4zIDguNiAxMi4zIDguNnMyMC43IDQuNyAyMiA2LjVjLTE2LjcgMTQtMjAuMiAyMC42LTE5LjcgMjguOGMxLjcgMjAuOCA3LjggMjQuOCAyMC41IDIzLjJsLTkuOC0xNC40Yy0xMS0xNi40LTIxLjItMjYuNi0zNC4yLTMzLjItMTYuNC04LjQtMzIuNi0xMC00Ny40LTcuMnMtMTIuNiAzLjItMTcuMiA2LjRjLTQuNiAzLjItNi4yIDguNi01LjIgMTQuMi02LjktMS0xMy42LTUuMi0xMy42LTE5LjggMC0xNC42IDctMzAgMTYuOC0zNC42LTEwLjgtMTUuOC00MC0yNC40LTQ4LjYtMzcuNGMtOC43LTEzIDcuOC0zMS42IDIxLjgtNDEuOCAxOC02LjUgMzIuNyAzIDQyIDExLjktMTQuNy0xNy42LTM1LjYtMjcuNC01Ni4yLTI2LjMtMTUuOC44LTMwLjggNi41LTQzLjIgMTYuNy0yMy42IDE5LjUtMzUgNDktMzUgNzYuM3M1LjggNDQuMiAyOS40IDYyLjZjMjEuNiAxNi41IDQ3LjIgMjQgNzYuOCA5LjJjMjAuNi0xMC41IDQ2LjItMjMuNCA3My0yNS42YzIyIDAgMjQuMi0xMC4yIDI0LjItMjVzLTguMy0yMC44LTE4LjgtMTguNmMtMTAuNSAyLjMtMjAgMS40LTI1LS45IDAgMCAxNi44IDEuOCAyMi43IDUtMjcuNyAxOC43LTUwLjggMzkuNi03NS41IDQ4LjQtMTEuNCA0LTE2LjIgNC40LTM3LjYgMy42Yy0yNC4yLS45LTMwLjgtMTcuOC0zMy0zMS43Yy0yLjMtMTMuOS0xLjYtMzItMS42LTMzLjJoMTAuNmMwLTUuOC0uNy0xNS41IDguMy0yMmwxNi4zLTcuNmMxMC01IDguMy0xLjMgMTYuNyA0LjUgNC40IDMgOS40IDYuOCA5LjQgMTMuMiAzLjctMi42IDYuNS01LjcgOS04LjFjLTMtMTMuMy00LjYtMjkuMi0xMi42LTM5LjgtOS0xMS41LTE4LjgtMTQuNC0yMS40LTE1LjYtMTcuNS05LjgtMzktNS00OC4yIDUuOC0xMyAxNC42IDQgMzYuNiAxOCAzOC44IDkuMyAxLjUgMTguNi0uNSA1LjYtNC44Yy0xMi44LTQuMy0yNS4yLTkuNi0zNi42LTE2LjUtMTcuOC0xMS4xLTI1LjUtMjkuNy0yNS41LTQ0IDAtMzcgNDAuMy00Ni40IDUwLTQ2LjRoNDBjOS43IDAgMjMuMiAzLjIgMzYuMiAzLjIgMTMgMCAyNC43LTUuMiAyNC44LTguOS0xMS4yLTcuMy0xOC40LTE3LjYtMjMuOC0yOC40LS41LTYuMi0xLjMtMTItMy43LTE3LjktMy42LTYuNi0xMS42LTcuMi0xNS43LTYuNnMtNy43IDQuNy03LjIgMTEuN2MuMyA2LjYgMi4yIDEzLjUgNC44IDE5LjEgMTUgMjYuMyAxNi42IDMyLjQgMTYuNiA1MC40czEuMyAzMS40IDMtNDljLS45LTExLjEtOS4zLTExLjMtMTUtMTEuNmMtNC42LS40LTkuNC0uOC0xNS4xLS40LTYuOCAwLTExLjggMS45LTE0IDYuNnptMjQxLjUgMzljLTQ3LjggMTkuNy04Mi42IDExLjkxLTExNC40LTEuNzItMjYuNjgtMTAuNDQtNTUuMTYtMjcuMjMtNzAuOTktNDIuNTVjLTcuMDYtNy43LTEzLjM2LTE1LjQtMTguMDUtMjMuMTUtNC44LTEyLjU3LTIuODUtMjYuMjItLjY1LTM4LjI2IDEyLjc0LTEwLjE5IDI4LjM2LTE0LjUxIDQ0LjMzLTEzLjIyYy03LjE1LTkuMzgtMTkuOTMtMTYuMDQtMzYuMjctMjEuNTMtMTMuMjItNC41Ny0yNy43OC03LjA4LTQzLjA0LTguMWMtMTcuODItMS4xMS0zNS4zNy0yLjA1LTUwLjgxLTEuMWMtMTcuNDYuMTEtMjQuMTkgNy4xMi0zMi4xNCAxNS40OGMtMi42IDkuMjUtNi44IDYuMTYtMTAuNjQgMTEuMzctMy44NCA1LjIxLTYuNjUgMTIuMTctNy4yMyAxOC40NC0uMjUgMTcuMDktLjY3IDM0LjAyLS45IDUwLjY2Yy0xLjMxIDYuNjItMS45NSAxNC4yLS41MyAyMS4zOWMtMS43MiAxMS40Mi00Ljg2IDIzLjY0LTIuMTIgMzQuNjcgMi41OCAxMC44MyA3LjI5IDIwLjY5IDE0LjYgMjkuMzUtNS43Ni02LjQ3LTEyLjE4LTEwLjgtMTkuMDgtMTMuNTVjLTUuMTktMS45OC05LjktMy4zNS0xMy41Ny02LjEzLTguMTItNi4wOC0xNC40LTExLjgyLTE4LjY0LTE5LjA0Yy00LjI1LTcuMjMtNi40LTExLjY0LTkuMi0xNC4xNi02LjMzLTUuNjQtMTIuMDMtOC4yOC0xNi45Mi05LjIzYy01LjU1LTEuMDQtMTEuNzQgLjc2LTE3LjU0IDEuNjQtMTAuMTcgMS40Ny0xOC4yIDQuMjctMjUuMDYgOC44OS01Ljc0IDMuODctOS40IDkuMjUtMTEuNTIgMTUuMjYtMS43NyA0Ljk4LTMuMDMgOS44NS00LjI5IDE0LjcyYy01LjYyIDIyLjUxLTMuOTQgNDUuMDktMS4xMyA2Ny4zIDMuMjUgMjUuNTIgNy4wMyA1MS4wNiAxMi43NyA3NC45MSAzLjc2IDE1LjY5IDcuNjYgMzEuMjkgMTIuNzMgNDUuNTRjNS40OSAxNS4zNSAxMS4wOCAzMS43NSAxNy41MiA0Ni42NCAzLjIyIDYuMDMgNi43MiAxMS42MyAxMS4yNSAxNi4zNWMyLjY4IDIuOCAxMy42NiA5LjY5IDE5LjkyIDEwLjgxYzIuNjYuNDggNC43LjU1IDcuNjMuNTdjMjIuOTkgLjEzIDQ1LjY4LTEuNSA2Ny44Ny0yLjQxYy00Ljk4LTEuODEtOS41NS00LjI1LTE0LjItNy44NnMtOC43LTEwLjYxLTEwLjc3LTE3LjYzYy0xLjMtNC4zMi0yLjE4LTE2LjU2IDIuMzYtMjAuMDZjNS4wMi00IDIzLjMyLTIuMDYgMjkuNDEgMi41IDkuNDcgNy4wMiAzLjE3IDE3LjktNC4wMyAyNi4yNi0xMC41IDEyLjIzLTE4Ljg2IDIyLjY0LTI4LjUyIDMwLjg1Yy05LjY2IDguNS0xOS4zNiAxNi43Mi0yOS4zIDI0LjM1LTEwLjI4IDguMDctMjEuNTcgMTQuMTctMzMuNjcgMTguNjEtMTUuNjMgNS42NS0zMi40NSA3LjgzLTQ4LjM0IDMuNDZjLTEwLjUzLTIuNzYtMjAuMjYtNy42OS0yOS43NC0xMy41Mi01LjcyLTMuNjMtMTAuMDgtOC44Mi0xMy45NS0xMy42OS0xLjU1LTcuMjQtMi41OS0xMi42Ny0zLjM1LTE3LjEzYy0uODgtNC45Ny0yLjE3LTExLjQyLTUuNTItMTYuMTctNC4yNS02LjEyLTEzLjM2LTguMjItMTkuMTgtOC4xYy01LjgyLjEyLTEzLjE0IDIuNDEtMTYuNTEgOS4yOS0yLjQgNC45My01LjM2IDEzLjAyLTYuOTggMTkuODMtMS43IDEyLjctMi42NyAyMi40Ni0yLjkzIDMzLjQ3LS4zMyAxMy41Ny0yLjM3IDI2Ljc0LTMuMjIgNDAuMTMtLjY5IDEwLjktLjM0IDIxLjYxIDMuMzkgMzIuNzFjNC44MSAxNC4yOSAxMy4yNyAyOS4xIDIxLjk0IDQyLjM3IDMuNzEgNS41OCA3LjUxIDEwLjYzIDEyLjUgMTUuMTQgMi42MyAyLjQxIDUuNTIgNC43NCA4LjQgNy4wNiAxNC42NyAxMS44NyAzMC4yOCAyMi41NyA0Ni43MiAzMi4wM2M2LjUgMy43OCAxMy4xOCA3LjE5IDIwLjA5IDEwLjI2IDEwLjY4IDQuNzYgMjEuNjggOC42IDMyLjg0IDEwLjM3IDEwLjEzIDEuNTYgMjEuMDcgMS40MiAzMS43NC0uNjggOS4yOS0xLjgxIDE4Ljc2LTQuNjMgMjcuOTctOC41NC0xLjE0LTMuNDctMS4wOC05LjA4LTEuNzQtMTMuNzctLjY2LTQuNjktMi4wMS05LjEzLTMuMzYtMTIuNzhjLTkuMjEtMjYuMy0xOC40OC01Mi41MS0yNy45LTc4LjQ1Yy05LjA5LTI0Ljg4LTE4LjM2LTQ5LjgxLTI3LjU0LTc0Ljg5Yy01LjYtMTUuNTYtMTAuNjUtMzEuNzYtMTUuNDUtNDguMDdjLTMuNTktMTIuNDUtNS45NS0yNS40NC01LjgtMzguNTNjLjE5LTMuOTQuNDMtMTAuODQgMS41NC0xMy4yMiA0LjI0LTkuMTEgMTEuMDItMTcuMTkgMTkuNzctMjMuMjcgMjUuOC0xOC4zNCA2NS4zMi0yMy40MSA5MS42NS0xMC4wMSAyNy41NSAxNC4yMSA0My43NSAzOC4zMyA0NC44NSA2Ni41NC42MiAxNS44Ny4wOCAzMS43Ny0uNzcgNDcuNTMtMS42MyAyMC41NC0zLjU5IDQwLjkxLTcuMzMgNjEuMDMtMi4xNiAxMS40Ny01LjE2IDIyLjgxLTguMjggMzQuMDktMy4zOSAxMi4xNS03Ljg3IDIzLjk5LTEzLjI2IDM1LjQzYy02LjExIDEyLjk2LTEyLjk2IDI1LjU1LTIxLjU1IDM2LjQ0LTIzLjkzIDI5Ljk5LTYwLjI1IDUzLjI3LTk2LjgxIDY2Ljc2LTkuNzkgMy42NS0yMi4zIDguNzEtMzQuNSA4LjAxLTEuNjMtMi4wOC0xLjgxLTcuNjMtMS44Ni04LjY0LS43Ni0xMy40Ni00LjA4LTI5LjA5LTUuNjMtNDMuOTktMy4xOS0zMC4yMy04LjI3LTU5Ljk3LTE0LjYtODguNTUtNi42OS0zMC4wNC0xNS43OC01OS4yNi0yNC45OS04OC4xMi02LjM1LTE5LjY3LTExLjgzLTM5LjgtMTUuNjktNjAuMDQtMi44Ny0xNC40OC0zLjQ0LTI5LjY3LTEuOTgtNDQuMzkgMS40Ni0xNC43MSAzLjctMjkuMjQgNi41Mi00My41MSAxLjI4LTYuNTggMi4xNy0xMy43NyAyLjM5LTIxLjE2Ii8+PC9zdmc+");
+            background-size: 80% auto;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            color: #333;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            z-index: 1;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.5); 
+            z-index: 0;
+        }
+
+        .title {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1b5e20;
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05), 0 5px 10px rgba(0,0,0,0.03);
+            perspective: 1000px;
+        }
+
+        .card {
+            width: 100%;
+            padding-top: 100%;
+            position: relative;
+            cursor: pointer;
+            border-radius: 50%;
+            transform-style: preserve-3d;
+            transition: transform 0.6s, box-shadow 0.3s, opacity 0.5s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1), inset 0 2px 4px rgba(255,255,255,0.2);
+            opacity: 1;
+        }
+        
+        .card.match {
+            opacity: 0;
+            transform: scale(0.1) rotateY(180deg);
+        }
+
+        .card-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+            user-select: none;
+            text-align: center;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4caf50, #8bc34a);
+            backface-visibility: hidden;
+            transform: translateZ(20px);
+        }
+        
+        .card.selected .card-content {
+            box-shadow: 0 0 15px 5px #ffeb3b, 0 0 10px 2px #ffc107;
+        }
+
+        .message-container {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1b5e20;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .time-display {
+            font-size: 1.5rem;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .game-board {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .title {
+                font-size: 2rem;
+            }
+            .card-content {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="title">لعبة مطابقة الكلمات الممتعة</h1>
+        <div class="game-board" id="game-board"></div>
+        <div class="message-container" id="message-container" style="display:none;">
+            <p id="win-message"></p>
+            <p id="time-taken"></p>
+        </div>
+    </div>
+
+    <script>
+        const wordPairs = {
+            'date palm': 'نخلة',
+            'falcon': 'صقر',
+            'sword dance': 'عرضة (الرقص بالسيف)',
+            'unity': 'وحدة',
+            'heritage': 'تراث',
+            'strength': 'قوة'
+        };
+
+        const board = document.getElementById('game-board');
+        const messageContainer = document.getElementById('message-container');
+        const winMessage = document.getElementById('win-message');
+        const timeTaken = document.getElementById('time-taken');
+
+        const popSound = new Audio('pop.mp3');
+        const dingSound = new Audio('ding.mp3');
+        const errorSound = new Audio('error.mp3');
+
+        let cards = [];
+        let firstCard = null;
+        let secondCard = null;
+        let lockBoard = false;
+        let matchesFound = 0;
+        let startTime;
+        let gameStarted = false;
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function createBoard() {
+            const words = Object.keys(wordPairs).concat(Object.values(wordPairs));
+            const shuffledWords = shuffle(words);
+
+            shuffledWords.forEach(word => {
+                const card = document.createElement('div');
+                card.classList.add('card');
+                card.dataset.word = word;
+                card.dataset.match = wordPairs[word] || Object.keys(wordPairs).find(key => wordPairs[key] === word);
+
+                const cardContent = document.createElement('div');
+                cardContent.classList.add('card-content');
+                cardContent.textContent = word;
+                cardContent.style.backgroundColor = getRandomColor();
+                
+                card.appendChild(cardContent);
+                card.addEventListener('click', flipCard);
+                board.appendChild(card);
+            });
+        }
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function flipCard() {
+            if (lockBoard) return;
+            if (this === firstCard) return;
+
+            if (!gameStarted) {
+                gameStarted = true;
+                startTime = new Date();
+            }
+
+            this.classList.add('selected');
+            popSound.play().catch(e => console.log('Audio playback error:', e));
+
+            if (!firstCard) {
+                firstCard = this;
+                return;
+            }
+
+            secondCard = this;
+            checkForMatch();
+        }
+
+        function checkForMatch() {
+            let isMatch = firstCard.dataset.match === secondCard.dataset.word;
+
+            if (isMatch) {
+                disableCards();
+            } else {
+                unflipCards();
+            }
+        }
+
+        function disableCards() {
+            lockBoard = true;
+            setTimeout(() => {
+                firstCard.classList.add('match');
+                secondCard.classList.add('match');
+                dingSound.play().catch(e => console.log('Audio playback error:', e));
+                resetBoard();
+                matchesFound++;
+                if (matchesFound === Object.keys(wordPairs).length) {
+                    endGame();
+                }
+            }, 800);
+        }
+
+        function unflipCards() {
+            lockBoard = true;
+            setTimeout(() => {
+                firstCard.classList.remove('selected');
+                secondCard.classList.remove('selected');
+                errorSound.play().catch(e => console.log('Audio playback error:', e));
+                resetBoard();
+            }, 1500);
+        }
+
+        function resetBoard() {
+            [firstCard, secondCard, lockBoard] = [null, null, false];
+        }
+
+        function endGame() {
+            const endTime = new Date();
+            const timeDifference = endTime - startTime;
+            const seconds = Math.floor(timeDifference / 1000);
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = seconds % 60;
+            
+            winMessage.textContent = 'You are the best!';
+            timeTaken.textContent = `完成用时: ${minutes} 分钟 ${remainingSeconds} 秒`;
+            
+            messageContainer.style.display = 'block';
+            board.style.display = 'none';
+        }
+
+        createBoard();
+    </script>
+
+</body>
+</html>
